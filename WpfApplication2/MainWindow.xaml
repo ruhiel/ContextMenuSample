@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:WpfApplication2"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="右クリックしてね" FontSize="50">
+            <TextBlock.ContextMenu>
+                <ContextMenu ItemsSource="{Binding Path=SomeCollection}">
+                    <ContextMenu.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Path=DisplayName}"/>
+                            <Setter Property="Command" Value="{Binding Path=Command}"/>
+                            <Setter Property="CommandParameter" Value="{Binding Path=DisplayName}"/>
+                        </Style>
+                    </ContextMenu.ItemContainerStyle>
+                </ContextMenu>
+            </TextBlock.ContextMenu>
+        </TextBlock>
+    </StackPanel>
 </Window>
